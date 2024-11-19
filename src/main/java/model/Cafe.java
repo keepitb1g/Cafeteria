@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class Cafe {
 	private int _gramosCafe;
 	private int _mililitrosAgua;
