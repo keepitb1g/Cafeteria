@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Cafeteria {
 	private String nombre;
@@ -10,14 +11,23 @@ public class Cafeteria {
 	private Map<String, String> redesSociales;
 	private List<Cafe> listaCafes;
 
-	// Constructor
-	public Cafeteria(String nombre, String direccion, Map<String, String> redesSociales, List<Cafe> listaCafes) {
+	// Constructor con tres parámetros
+	public Cafeteria(String nombre, String direccion, Map<String, String> redesSociales) {
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.redesSociales = redesSociales;
 		this.listaCafes = new ArrayList<>();
 	}
 
+	// Constructor con cuatro parámetros
+	public Cafeteria(String nombre, String direccion, Map<String, String> redesSociales, List<Cafe> listaCafes) {
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.redesSociales = redesSociales;
+		this.listaCafes = listaCafes;
+	}
+
+	// Getters and Setters
 	public String getNombre() {
 		return nombre;
 	}
@@ -50,38 +60,42 @@ public class Cafeteria {
 		this.listaCafes = listaCafes;
 	}
 
-	// Métodos para gestionar los cafés
-	public void agregarCafé(Cafe cafe) {
+	// Métodos para gestionar los cafes
+	public void agregarCafe(Cafe cafe) {
 		listaCafes.add(cafe);
 	}
 
-	public List<Cafe> obtenerCafésPorTamaño(String tamano) {
-		List<Cafe> cafesPorTamaño = new ArrayList<>();
+	public List<Cafe> obtenerCafesPorTamano(String tamano) {
+		List<Cafe> cafesPorTamano = new ArrayList<>();
 		for (Cafe cafe : listaCafes) {
-			if (cafe.getTamaño().equals(tamano)) {
-				cafesPorTamaño.add(cafe);
+			if (cafe.getTamano().equals(tamano)) {
+				cafesPorTamano.add(cafe);
 			}
 		}
-		return cafesPorTamaño;
+		return cafesPorTamano;
 	}
 
-	public void descontinuarCafé(Cafe cafe) {
+	public void descontinuarCafe(Cafe cafe) {
 		listaCafes.remove(cafe);
 	}
 
-	public void modificarInformación(String nuevoNombre, String nuevaDireccion, Map<String, String> nuevasRedesSociales) {
+	public void modificarInformacion(String nuevoNombre, String nuevaDireccion, Map<String, String> nuevasRedesSociales) {
 		this.nombre = nuevoNombre;
 		this.direccion = nuevaDireccion;
 		this.redesSociales = nuevasRedesSociales;
 	}
 
+	// Método toString() para representar el objeto como una cadena en líneas separadas
 	@Override
 	public String toString() {
-		return "Cafetería{" +
-				"nombre='" + nombre + '\'' +
-				", direccion='" + direccion + '\'' +
-				", redesSociales=" + redesSociales +
-				", listaCafes=" + listaCafes +
-				'}';
+		return "Cafeteria:\n" +
+				"Nombre: '" + nombre + '\'' + "\n" +
+				"Direccion: '" + direccion + '\'' + "\n" +
+				"Redes Sociales: " + redesSociales.entrySet().stream()
+				.map(entry -> entry.getKey() + ": " + entry.getValue())
+				.collect(Collectors.joining(", ")) + "\n" +
+				"Lista de cafes:\n" + listaCafes.stream()
+				.map(Cafe::toString)
+				.collect(Collectors.joining("\n")) + "\n";
 	}
 }

@@ -1,0 +1,7 @@
+Cafe:
+Nombre: 'Macciato'
+Gramos de cafe: 10
+Mililitros de agua: 100
+Tamano: 'Pequeño'
+Ingredientes opcionales: [Leche]
+

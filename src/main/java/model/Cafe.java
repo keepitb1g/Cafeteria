@@ -3,49 +3,70 @@ package model;
 import java.util.List;
 
 public class Cafe {
+	private String nombre;
 	private int gramosCafe;
 	private int mililitrosAgua;
-	private String tamaño;
+	private String tamano;
 	private List<String> ingredientesOpcionales;
-	public Cafeteria _cafe;
 
-	public Cafe(int gramosCafe, int mililitrosAgua, String tamaño, List<String> ingredientesOpcionales) {
+	// Constructor
+	public Cafe(String nombre, int gramosCafe, int mililitrosAgua, String tamano, List<String> ingredientesOpcionales) {
+		this.nombre = nombre;
 		this.gramosCafe = gramosCafe;
 		this.mililitrosAgua = mililitrosAgua;
-		this.tamaño = tamaño;
-		this.ingredientesOpcionales = ingredientesOpcionales; }
-
-	public int getGramosCafe() {
-		return this.gramosCafe;
+		this.tamano = tamano;
+		this.ingredientesOpcionales = ingredientesOpcionales;
 	}
 
-	public void setGramosCafe(int aGramosCafe) {
-		this.gramosCafe = aGramosCafe;
+	// Getters and Setters
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getGramosCafe() {
+		return gramosCafe;
+	}
+
+	public void setGramosCafe(int gramosCafe) {
+		this.gramosCafe = gramosCafe;
 	}
 
 	public int getMililitrosAgua() {
-		return this.mililitrosAgua;
+		return mililitrosAgua;
 	}
 
-	public void setMililitrosAgua(int aMililitrosAgua) {
-		this.mililitrosAgua = aMililitrosAgua;
+	public void setMililitrosAgua(int mililitrosAgua) {
+		this.mililitrosAgua = mililitrosAgua;
 	}
 
-	public String getTamaño() {
-		return this.tamaño;
+	public String getTamano() {
+		return tamano;
 	}
 
-	public void setTamaño(String aTamaño) {
-		this.tamaño = aTamaño;
+	public void setTamano(String tamano) {
+		this.tamano = tamano;
 	}
 
 	public List<String> getIngredientesOpcionales() {
 		return ingredientesOpcionales;
 	}
 
-	public void setIngredientesOpcionales(List<String> aIngredientesOpcionales) {
+	public void setIngredientesOpcionales(List<String> ingredientesOpcionales) {
 		this.ingredientesOpcionales = ingredientesOpcionales;
-	}@Override public String toString() {
-		return "Café{" + "gramosCafe=" + gramosCafe + ", mililitrosAgua=" + mililitrosAgua + ", tamaño='" + tamaño + '\'' + ", ingredientesOpcionales=" + ingredientesOpcionales + '}';
+	}
+
+	// Método toString() para representar el objeto como una cadena en líneas separadas
+	@Override
+	public String toString() {
+		return "Cafe:\n" +
+				"Nombre: " + nombre + "\n" +
+				"Gramos de cafe: " + gramosCafe + "\n" +
+				"Mililitros de agua: " + mililitrosAgua + "\n" +
+				"Tamano: " + tamano + "\n" +
+				"Ingredientes opcionales: " + String.join(", ", ingredientesOpcionales) + "\n";
 	}
 }

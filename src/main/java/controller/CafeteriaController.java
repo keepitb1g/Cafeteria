@@ -2,39 +2,60 @@ package controller;
 
 import model.Cafeteria;
 import model.Cafe;
+import data.GestorArchivos;
 
 import java.util.List;
 import java.util.Map;
 
 public class CafeteriaController {
-	private Cafeteria _cafeteria;
-	public Cafeteria _unnamed_Cafeteria_;
+	private Cafeteria cafeteria;
 
-	public void CafeteriaController(Cafeteria aCafeteria) {
-		throw new UnsupportedOperationException();
+	// Constructor
+	public CafeteriaController(Cafeteria cafeteria) {
+		this.cafeteria = cafeteria;
 	}
 
-	public void agregarCafe(Cafe aCafe) {
-		throw new UnsupportedOperationException();
+	// Método para obtener la cafeteria
+	public Cafeteria getCafeteria() {
+		return cafeteria;
 	}
 
-	public List<Cafe> obtenerCafesPorTamaño(String aTamaño) {
-		throw new UnsupportedOperationException();
+	// Métodos para gestionar los cafes
+	public void agregarCafe(Cafe cafe) {
+		cafeteria.agregarCafe(cafe);
 	}
 
-	public void descontinuarCafe(Cafe aCafe) {
-		throw new UnsupportedOperationException();
+	public List<Cafe> obtenerCafesPorTamano(String tamano) {
+		return cafeteria.obtenerCafesPorTamano(tamano);
 	}
 
-	public void modificarInformacionCafeteria(String aNuevoNombre, String aNuevaDireccion, Map<String, String> aNuevasRedesSociales) {
-		throw new UnsupportedOperationException();
+	public void descontinuarCafe(Cafe cafe) {
+		cafeteria.descontinuarCafe(cafe);
 	}
 
-	public void guardarDatos() {
-		throw new UnsupportedOperationException();
+	// Métodos para gestionar la cafeteria
+	public void modificarInformacionCafeteria(String nuevoNombre, String nuevaDireccion, Map<String, String> nuevasRedesSociales) {
+		cafeteria.modificarInformacion(nuevoNombre, nuevaDireccion, nuevasRedesSociales);
 	}
 
-	public void cargarDatos() {
-		throw new UnsupportedOperationException();
+	// Métodos para guardar y cargar datos
+	public void guardarDatosCafeteria() {
+		GestorArchivos.guardarCafeteria(cafeteria, "cafeteria.txt");
+	}
+
+	public void cargarDatosCafeteria() {
+		Cafeteria cargada = GestorArchivos.cargarCafeteria("cafeteria.txt");
+		if (cargada != null) {
+			this.cafeteria = cargada;
+		}
+	}
+
+	public void guardarDatosCafes() {
+		GestorArchivos.guardarCafes(cafeteria.getListaCafes(), "cafes.txt");
+	}
+
+	public void cargarDatosCafes() {
+		List<Cafe> cafes = GestorArchivos.cargarCafes("cafes.txt");
+		cafeteria.setListaCafes(cafes);
 	}
 }
