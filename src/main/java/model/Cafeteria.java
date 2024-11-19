@@ -1,76 +1,87 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Vector;
-import model.Cafe;
-import controller.CafeteriaController;
 
 public class Cafeteria {
-	private String _nombre;
-	private String _direccion;
-	private Map<String, String> _redesSociales;
-	private List<Cafe> _listaCafes;
-	public Vector<Cafe> _cafe = new Vector<Cafe>();
-	public CafeteriaController _unnamed_CafeteriaController_;
+	private String nombre;
+	private String direccion;
+	private Map<String, String> redesSociales;
+	private List<Cafe> listaCafes;
 
-	public String getNombre() {
-		return this._nombre;
+	// Constructor
+	public Cafeteria(String nombre, String direccion, Map<String, String> redesSociales, List<Cafe> listaCafes) {
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.redesSociales = redesSociales;
+		this.listaCafes = new ArrayList<>();
 	}
 
-	public void setNombre(String aNombre) {
-		this._nombre = aNombre;
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public String getDireccion() {
-		return this._direccion;
+		return direccion;
 	}
 
-	public void setDireccion(String aDireccion) {
-		this._direccion = aDireccion;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 
 	public Map<String, String> getRedesSociales() {
-		throw new UnsupportedOperationException();
+		return redesSociales;
 	}
 
-	public void setRedesSociales(Map<String, String> aRedesSociales) {
-		throw new UnsupportedOperationException();
+	public void setRedesSociales(Map<String, String> redesSociales) {
+		this.redesSociales = redesSociales;
 	}
 
 	public List<Cafe> getListaCafes() {
-		throw new UnsupportedOperationException();
+		return listaCafes;
 	}
 
-	public void setListaCafes(List<Cafe> aListaCafes) {
-		throw new UnsupportedOperationException();
+	public void setListaCafes(List<Cafe> listaCafes) {
+		this.listaCafes = listaCafes;
 	}
 
-	public void getAttribute() {
-		throw new UnsupportedOperationException();
+	// Métodos para gestionar los cafés
+	public void agregarCafé(Cafe cafe) {
+		listaCafes.add(cafe);
 	}
 
-	public void setAttribute(Object aAttribute) {
-		throw new UnsupportedOperationException();
+	public List<Cafe> obtenerCafésPorTamaño(String tamano) {
+		List<Cafe> cafesPorTamaño = new ArrayList<>();
+		for (Cafe cafe : listaCafes) {
+			if (cafe.getTamaño().equals(tamano)) {
+				cafesPorTamaño.add(cafe);
+			}
+		}
+		return cafesPorTamaño;
 	}
 
-	public void agregarCafe(Cafe aCafe) {
-		throw new UnsupportedOperationException();
+	public void descontinuarCafé(Cafe cafe) {
+		listaCafes.remove(cafe);
 	}
 
-	public List<Cafe> obtenerCafesPorTamaño(String aTamaño) {
-		throw new UnsupportedOperationException();
+	public void modificarInformación(String nuevoNombre, String nuevaDireccion, Map<String, String> nuevasRedesSociales) {
+		this.nombre = nuevoNombre;
+		this.direccion = nuevaDireccion;
+		this.redesSociales = nuevasRedesSociales;
 	}
 
-	public void descontinuarCafe(Cafe aCafe) {
-		throw new UnsupportedOperationException();
-	}
-
-	public void modificarInformacion(String aNuevoNombre, String aNuevaDireccion, Map<String, String> aNuevasRedesSociales) {
-		throw new UnsupportedOperationException();
-	}
-
+	@Override
 	public String toString() {
-		throw new UnsupportedOperationException();
+		return "Cafetería{" +
+				"nombre='" + nombre + '\'' +
+				", direccion='" + direccion + '\'' +
+				", redesSociales=" + redesSociales +
+				", listaCafes=" + listaCafes +
+				'}';
 	}
 }
