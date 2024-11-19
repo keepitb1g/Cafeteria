@@ -127,8 +127,7 @@ public class CafeteriaGUI extends JFrame {
 		setVisible(true);
 	}
 
-	// Método para agregar un café
-	private void agregarCafe() {
+	public void agregarCafe() {
 		String nombre = nombreCafeField.getText();
 		int gramos = Integer.parseInt(gramosField.getText());
 		int mililitros = Integer.parseInt(mililitrosField.getText());
@@ -139,20 +138,15 @@ public class CafeteriaGUI extends JFrame {
 		mostrarDatos();
 	}
 
-	// Método para mostrar los datos en el TextArea
 	public void mostrarDatos() {
 		textArea.setText(controller.getCafeteria().toString());
 	}
-
-	// Método para cargar los datos
-	private void cargarDatos() {
+	public void cargarDatos() {
 		controller.cargarDatosCafeteria();
 		controller.cargarDatosCafes();
 		mostrarDatos();
 	}
-
-	// Método para guardar los datos
-	private void guardarDatos() {
+	public void guardarDatos() {
 		controller.guardarDatosCafeteria();
 		controller.guardarDatosCafes();
 	}

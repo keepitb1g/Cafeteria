@@ -15,7 +15,6 @@ public class CafeteriaController {
 		this.cafeteria = cafeteria;
 	}
 
-	// Método para obtener la cafeteria
 	public Cafeteria getCafeteria() {
 		return cafeteria;
 	}
@@ -33,7 +32,6 @@ public class CafeteriaController {
 		cafeteria.descontinuarCafe(cafe);
 	}
 
-	// Métodos para gestionar la cafeteria
 	public void modificarInformacionCafeteria(String nuevoNombre, String nuevaDireccion, Map<String, String> nuevasRedesSociales) {
 		cafeteria.modificarInformacion(nuevoNombre, nuevaDireccion, nuevasRedesSociales);
 	}
@@ -46,7 +44,8 @@ public class CafeteriaController {
 	public void cargarDatosCafeteria() {
 		Cafeteria cargada = GestorArchivos.cargarCafeteria("cafeteria.txt");
 		if (cargada != null) {
-			this.cafeteria = cargada;
+			cafeteria.modificarInformacion(cargada.getNombre(), cargada.getDireccion(), cargada.getRedesSociales());
+			cafeteria.setListaCafes(cargada.getListaCafes());
 		}
 	}
 

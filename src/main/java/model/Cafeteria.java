@@ -85,7 +85,6 @@ public class Cafeteria {
 		this.redesSociales = nuevasRedesSociales;
 	}
 
-	// Método toString() para representar el objeto como una cadena en líneas separadas
 	@Override
 	public String toString() {
 		return "Cafeteria:\n" +
